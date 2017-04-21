@@ -1,0 +1,6 @@
+framework module Pods_fbsearchUITests {
+  umbrella header "Pods-fbsearchUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
