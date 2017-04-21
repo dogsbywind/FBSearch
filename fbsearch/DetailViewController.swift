@@ -24,6 +24,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var albumUnits = [AlbumUnit]()
     var postUnits = [PostUnit]()
+    var hiddenStatus = Array(repeating: true, count: 10)
     
     func loadAP(){
         SwiftSpinner.show(delay: 0.1, title: "Loading Data...")
@@ -73,7 +74,19 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     self.postUnits += [postUnit]
                 }
                 print("foo")
-                //self.albumTable.reloadData()
+                if self.albumTable != nil {
+                    if self.albumUnits.count > 0 {
+                        self.albumTable.reloadData()
+                        self.albumTable.isHidden = false
+                        self.albumNotFound.isHidden = true
+                        self.albumTable.estimatedRowHeight = 66
+                        self.albumTable.rowHeight = UITableViewAutomaticDimension
+                    }
+                    else {
+                        self.albumTable.isHidden = true
+                        self.albumNotFound.isHidden = false
+                    }
+                }
                 if self.postTable != nil {
                     if self.postUnits.count > 0 {
                         self.postTable.reloadData()
@@ -117,14 +130,31 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) ->       UITableViewCell{
-        if tableView === albumTable{
-           /* let cellIdentifier = "ResultTableViewCell"
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ResultTableViewCell  else {
+        var returnCell:UITableViewCell
+        if tableView === albumTable {
+            let cellIdentifier = "albumCell"
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? AlbumTableViewCell  else {
                 fatalError("failed.")
             }
-            //let resultUnit = resultsLoaded[indexPath.row]
-            cell.nameLabel.text = resultUnit.name
-            cell.profilePhoto.image = resultUnit.photo*/
+            let albumUnit = albumUnits[indexPath.row]
+            cell.albumTitle.text = albumUnit.title
+            if hiddenStatus[2*indexPath.row] {
+                cell.pic1.isHidden = true
+                cell.pic1.image = nil
+            }
+            else {
+                cell.pic1.isHidden = false
+                cell.pic1.image = albumUnit.pic1
+            }
+            if hiddenStatus[2*indexPath.row+1] {
+                cell.pic2.isHidden = true
+                cell.pic2.image = nil
+            }
+            else {
+                cell.pic2.isHidden = false
+                cell.pic2.image = albumUnit.pic2
+            }
+            returnCell = cell
         }
         else{
             let cellIdentifier = "postCell"
@@ -135,15 +165,38 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell.profile.image = postUnit.profile
             cell.message.text = postUnit.message
             cell.timeStamp.text = postUnit.timeStamp
-            return cell
-        }
- 
-        //let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-        
-        // Configure the cell...
-        
-        return (tableView.dequeueReusableCell(withIdentifier: "123", for: indexPath) as? PostTableViewCell)!
-        // create your cells
+            returnCell = cell
+            //let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+            
+            // Configure the cell...
+            
+            // create your cells
+            }
+        return returnCell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        //if indexPath.row<resultsLoaded.count{
+            if tableView === albumTable{
+                guard let cell = tableView.cellForRow(at: indexPath) as? AlbumTableViewCell else{
+                    fatalError("failed")
+                }
+                print (cell.albumTitle.text)
+                if indexPath.row < albumUnits.count{
+                    let albumUnit = albumUnits[indexPath.row]
+                    if albumUnit.pic1 != nil {
+                        hiddenStatus [2*indexPath.row] = !hiddenStatus [2*indexPath.row]
+                    }
+                    if albumUnit.pic2 != nil {
+                        hiddenStatus [2*indexPath.row+1] = !hiddenStatus [2*indexPath.row+1]
+                    }
+                    tableView.beginUpdates()
+                    tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                    tableView.endUpdates()
+                }
+                
+            }
+       // }
     }
     /*
     // MARK: - Navigation
