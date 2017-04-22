@@ -10,6 +10,7 @@
 		257451798401BE76BC7093F7 /* Pods_fbsearchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C5A2BDA2C2B423AC05DFED /* Pods_fbsearchTests.framework */; };
 		4B0A71461EA9745300015DDB /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0A71451EA9745300015DDB /* PostTableViewCell.swift */; };
 		4B0A71481EA9745E00015DDB /* AlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0A71471EA9745E00015DDB /* AlbumTableViewCell.swift */; };
+		4B428ABA1EAAE6B900DECC81 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B428AB91EAAE6B900DECC81 /* SWRevealViewController.m */; };
 		4B80C6F31EA56CDB00D732B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B80C6F21EA56CDB00D732B6 /* AppDelegate.swift */; };
 		4B80C6FA1EA56CDB00D732B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B80C6F81EA56CDB00D732B6 /* Main.storyboard */; };
 		4B80C6FC1EA56CDB00D732B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B80C6FB1EA56CDB00D732B6 /* Assets.xcassets */; };
@@ -77,6 +78,9 @@
 		179FB1CE8699E865BDE0B8F9 /* Pods_fbsearchUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fbsearchUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B0A71451EA9745300015DDB /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		4B0A71471EA9745E00015DDB /* AlbumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumTableViewCell.swift; sourceTree = "<group>"; };
+		4B428AB71EAAE6B900DECC81 /* fbsearch-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "fbsearch-Bridging-Header.h"; sourceTree = "<group>"; };
+		4B428AB81EAAE6B900DECC81 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		4B428AB91EAAE6B900DECC81 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		4B80C6EF1EA56CDB00D732B6 /* fbsearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fbsearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B80C6F21EA56CDB00D732B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B80C6F91EA56CDB00D732B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -215,11 +219,14 @@
 				4B8573101EA747CF0005B53C /* ResultTableViewCell.swift */,
 				4B0A71471EA9745E00015DDB /* AlbumTableViewCell.swift */,
 				4B0A71451EA9745300015DDB /* PostTableViewCell.swift */,
+				4B8573181EA7F13A0005B53C /* Passengers.swift */,
 				4B80C6FB1EA56CDB00D732B6 /* Assets.xcassets */,
 				4B80C6FD1EA56CDB00D732B6 /* LaunchScreen.storyboard */,
 				4B80C7001EA56CDB00D732B6 /* Info.plist */,
 				4B80C7471EA5D8CD00D732B6 /* Details.storyboard */,
-				4B8573181EA7F13A0005B53C /* Passengers.swift */,
+				4B428AB81EAAE6B900DECC81 /* SWRevealViewController.h */,
+				4B428AB91EAAE6B900DECC81 /* SWRevealViewController.m */,
+				4B428AB71EAAE6B900DECC81 /* fbsearch-Bridging-Header.h */,
 			);
 			path = fbsearch;
 			sourceTree = "<group>";
@@ -359,6 +366,7 @@
 					4B80C6EE1EA56CDB00D732B6 = {
 						CreatedOnToolsVersion = 8.3;
 						DevelopmentTeam = 55Q48DVF6E;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					4B80C7041EA56CDC00D732B6 = {
@@ -586,6 +594,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B8573231EA80C750005B53C /* GroupViewController.swift in Sources */,
+				4B428ABA1EAAE6B900DECC81 /* SWRevealViewController.m in Sources */,
 				4B8573211EA80C6A0005B53C /* PlaceViewController.swift in Sources */,
 				4B0A71461EA9745300015DDB /* PostTableViewCell.swift in Sources */,
 				4B8573131EA74F8D0005B53C /* ResultUnit.swift in Sources */,
@@ -757,12 +766,15 @@
 			baseConfigurationReference = 98986F7356A6AE326306C56B /* Pods-fbsearch.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 55Q48DVF6E;
 				INFOPLIST_FILE = fbsearch/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = dbw.fbsearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "fbsearch/fbsearch-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -772,12 +784,14 @@
 			baseConfigurationReference = 76DEE0887744B4532EF9D377 /* Pods-fbsearch.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 55Q48DVF6E;
 				INFOPLIST_FILE = fbsearch/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = dbw.fbsearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "fbsearch/fbsearch-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

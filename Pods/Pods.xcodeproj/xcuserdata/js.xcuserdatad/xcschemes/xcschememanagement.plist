@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>EasyToast.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-fbsearch.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,17 +42,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>64C597C1B8FD3DA94281963C6F41B45B</key>
+		<key>04B95D9469FBA5A29DDFA3F354B5D412</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>65AF88FE647F3D13B623031A02C99AD8</key>
+		<key>21CF0AFA8F0DAFF67B1BC430BFF4C9EB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6DABC633D163DE32DC63D2FD10C9A329</key>
+		<key>27E6A123CA069C28D3AD79DA29050176</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -58,6 +63,11 @@
 			<true/>
 		</dict>
 		<key>BE0217296235052D66244E87E33BD8F3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C7A27CEE1A5A58B01166DDC8469E0871</key>
 		<dict>
 			<key>primary</key>
 			<true/>

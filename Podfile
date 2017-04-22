@@ -9,6 +9,7 @@ target 'fbsearch' do
   pod "SwiftSpinner"
   pod 'Alamofire', '~> 4.4'
   pod 'SwiftyJSON'
+  pod 'EasyToast'
   
   target 'fbsearchTests' do
     inherit! :search_paths

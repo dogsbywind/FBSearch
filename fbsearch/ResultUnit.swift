@@ -14,12 +14,14 @@ class ResultUnit{
     var photo:UIImage
     var favo:Bool
     var id:String
+    var url:String
     
     init(){
         self.name = String()
         self.photo = UIImage()
         self.favo = true
         self.id = String()
+        self.url = String()
     }
     
     init?(name:String,photo:UIImage,favo:Bool,id:String) {
@@ -30,5 +32,6 @@ class ResultUnit{
         self.photo=photo
         self.favo=favo
         self.id=id
+        self.url = String()
     }
 }

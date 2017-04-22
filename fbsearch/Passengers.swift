@@ -20,14 +20,14 @@ class Parameters{
     
     var searchid:String
     
-    var tempResult:ResultUnit
+    var favoDict:[String:String]
     
     init(){
         self.keyword = String()
         self.next = UIButton()
         self.prev = UIButton()
         self.searchid = String()
-        self.tempResult = ResultUnit()
+        self.favoDict = [String:String]()
     }
 }
 }

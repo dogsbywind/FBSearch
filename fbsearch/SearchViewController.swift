@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EasyToast
 
 class SearchViewController: UIViewController {
     
@@ -26,7 +27,8 @@ class SearchViewController: UIViewController {
     
     @IBAction func searchClicked(_ sender: Any) {
         if(searchText.text=="") {
-            return//TODO add toast
+            self.view.showToast("Please enter a keyword", position: .bottom, popTime: 3, dismissOnTap: true)
+            return
         }
         performSegue(withIdentifier: "searchToResult", sender: self)
 

@@ -33,6 +33,11 @@ class PageViewController: ResultViewController {
         loadResults(table: self.pageTable,searchQuery: query)
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        pageTable.reloadData()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

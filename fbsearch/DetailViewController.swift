@@ -34,6 +34,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 let js = JSON(JSONa)
                 var profilePhoto:UIImage = UIImage()
                 if let photoUrl = URL(string:js["picture"]["data"]["url"].string!){
+
                     if let data = NSData(contentsOf: photoUrl){
                         profilePhoto = UIImage(data: data as Data)!
                     }
@@ -178,10 +179,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         //if indexPath.row<resultsLoaded.count{
             if tableView === albumTable{
-                guard let cell = tableView.cellForRow(at: indexPath) as? AlbumTableViewCell else{
-                    fatalError("failed")
-                }
-                print (cell.albumTitle.text)
+                //print (cell.albumTitle.text)
                 if indexPath.row < albumUnits.count{
                     let albumUnit = albumUnits[indexPath.row]
                     if albumUnit.pic1 != nil {
@@ -197,6 +195,23 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
             }
        // }
+    }
+    
+    func addToFavorite(dict:[String:String]){
+        let defaults = UserDefaults.standard
+        if defaults.object(forKey: dict["id"]!) == nil{
+            defaults.set(dict,forKey:dict["id"]!)
+        }
+        else {
+            defaults.removeObject(forKey: dict["id"]!)
+        }
+    }
+    
+    @IBAction func popUpMenu1(_ sender: Any) {
+        addToFavorite(dict: Passengers.union.favoDict)
+    }
+    @IBAction func popUpMenu2(_ sender: Any) {
+        addToFavorite(dict: Passengers.union.favoDict)
     }
     /*
     // MARK: - Navigation

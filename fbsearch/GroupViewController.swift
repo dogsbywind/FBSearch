@@ -33,6 +33,11 @@ class GroupViewController: ResultViewController {
         loadResults(table: self.groupTable,searchQuery: query)
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        groupTable.reloadData()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

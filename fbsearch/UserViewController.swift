@@ -33,6 +33,11 @@ class UserViewController: ResultViewController {
         loadResults(table: self.userTable,searchQuery: query)
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        userTable.reloadData()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

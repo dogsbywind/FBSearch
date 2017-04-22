@@ -51,6 +51,7 @@ class ResultViewController: UIViewController ,UITableViewDelegate, UITableViewDa
                         else {
                             fatalError("unable to create")
                     }
+                    resultUnit.url = subJson["picture"]["data"]["url"].string!
                     self.resultUnits += [resultUnit]
                 }
                 self.totalPages = self.resultUnits.count/10
@@ -75,6 +76,15 @@ class ResultViewController: UIViewController ,UITableViewDelegate, UITableViewDa
             fatalError("failed.")
         }
         let resultUnit = resultsLoaded[indexPath.row]
+        let defaults = UserDefaults.standard
+        //can come up with a better idea, only reload the row that might be modified
+        //but to save time...
+        if defaults.dictionary(forKey: resultUnit.id) != nil{
+            cell.favoStar.image = #imageLiteral(resourceName: "filled.png")
+        }
+        else{
+            cell.favoStar.image = #imageLiteral(resourceName: "empty.png")
+        }
         cell.nameLabel.text = resultUnit.name
         cell.profilePhoto.image = resultUnit.photo
         //let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
@@ -88,6 +98,9 @@ class ResultViewController: UIViewController ,UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         if indexPath.row<resultsLoaded.count{
             Passengers.union.searchid = resultsLoaded[indexPath.row].id
+            Passengers.union.favoDict["name"] = resultsLoaded[indexPath.row].name
+            Passengers.union.favoDict["id"] = resultsLoaded[indexPath.row].id
+            Passengers.union.favoDict["profileUrl"] = resultsLoaded[indexPath.row].url
             performSegue(withIdentifier: "toDetail", sender: self)
         }
     }
