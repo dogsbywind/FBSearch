@@ -10,6 +10,7 @@ import UIKit
 
 class PageViewController: ResultViewController {
 
+    @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var prevButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     
@@ -27,6 +28,7 @@ class PageViewController: ResultViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        initSideMenu(menuButton:menuButton)
         let query:String = "https://dogs-by-wind.appspot.com/fbsearch.php?keyword="+Passengers.union.keyword+"&type=page"
         Passengers.union.next=nextButton
         Passengers.union.prev=prevButton

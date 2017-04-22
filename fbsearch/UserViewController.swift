@@ -10,6 +10,7 @@ import UIKit
 
 class UserViewController: ResultViewController {
     
+    @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var prevButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     func loadButtons(){
@@ -27,6 +28,7 @@ class UserViewController: ResultViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        initSideMenu(menuButton:menuButton)
         let query:String = "https://dogs-by-wind.appspot.com/fbsearch.php?keyword="+Passengers.union.keyword+"&type=user"
         Passengers.union.next=nextButton
         Passengers.union.prev=prevButton

@@ -11,10 +11,12 @@ import EasyToast
 
 class SearchViewController: UIViewController {
     
+    @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var searchText: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initSideMenu()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -23,6 +25,12 @@ class SearchViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         Passengers.union.keyword = (searchText.text?.replacingOccurrences(of: " ", with: "%20"))!
+    }
+    
+    func initSideMenu(){
+        menuButton.target = revealViewController()
+        menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
+        revealViewController().rearViewRevealWidth = 275
     }
     
     @IBAction func searchClicked(_ sender: Any) {

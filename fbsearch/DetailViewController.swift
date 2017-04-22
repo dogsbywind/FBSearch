@@ -206,6 +206,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             defaults.removeObject(forKey: dict["id"]!)
         }
     }
+
     
     @IBAction func popUpMenu1(_ sender: Any) {
         addToFavorite(dict: Passengers.union.favoDict)

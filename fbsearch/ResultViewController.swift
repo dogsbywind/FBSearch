@@ -35,6 +35,12 @@ class ResultViewController: UIViewController ,UITableViewDelegate, UITableViewDa
         }
     }
     
+    func initSideMenu(menuButton:UIBarButtonItem){
+        menuButton.target = revealViewController()
+        menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
+        revealViewController().rearViewRevealWidth = 275
+    }
+    
     func loadResults(table:UITableView,searchQuery:String){
         SwiftSpinner.show(delay: 0.1, title: "Loading Data...")
         Alamofire.request(searchQuery).responseJSON { response in
@@ -101,6 +107,27 @@ class ResultViewController: UIViewController ,UITableViewDelegate, UITableViewDa
             Passengers.union.favoDict["name"] = resultsLoaded[indexPath.row].name
             Passengers.union.favoDict["id"] = resultsLoaded[indexPath.row].id
             Passengers.union.favoDict["profileUrl"] = resultsLoaded[indexPath.row].url
+            var type = String()
+            switch tableView{
+            case userTable :
+                type = "user"
+                break
+            case pageTable:
+                type = "page"
+                break
+            case eventTable:
+                type = "event"
+                break
+            case placeTable:
+                type = "place"
+                break
+            case groupTable:
+                type = "group"
+                break
+            default:
+                break
+            }
+            Passengers.union.favoDict["type"] = type
             performSegue(withIdentifier: "toDetail", sender: self)
         }
     }
