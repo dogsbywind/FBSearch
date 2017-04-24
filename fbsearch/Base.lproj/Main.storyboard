@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Side Table View Controller-->
         <scene sceneID="A68-SG-v3V">
             <objects>
-                <tableViewController id="fHy-ZS-0Oo" sceneMemberID="viewController">
+                <tableViewController id="fHy-ZS-0Oo" customClass="SideTableViewController" customModule="fbsearch" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="KVO-km-rLA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -66,6 +66,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="rzw-bk-em0" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="hMH-pd-ZgU"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="56" id="NkV-0y-xnU">
                                         <rect key="frame" x="0.0" y="203" width="414" height="56"/>
@@ -87,6 +90,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="49e-Tb-3d3" kind="custom" identifier="goFavo" customClass="SWRevealViewControllerSeguePushController" id="qDf-cF-GdD"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -117,6 +123,11 @@
                             <outlet property="delegate" destination="fHy-ZS-0Oo" id="86Y-d6-dAm"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="aboutme" destination="16q-OP-syM" id="TAT-AA-ti8"/>
+                        <outlet property="favorites" destination="NkV-0y-xnU" id="MVX-tn-dtv"/>
+                        <outlet property="home" destination="iko-XH-awJ" id="paa-wu-rsF"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xXz-hd-bE8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -325,6 +336,7 @@
                     <tabBarItem key="tabBarItem" title="Users" image="users.png" id="mAr-7n-pv8"/>
                     <connections>
                         <outlet property="menuButton" destination="ddj-mR-GGb" id="nri-v0-EQX"/>
+                        <outlet property="navTitle" destination="5XI-tF-2CM" id="Kk1-Mo-Md9"/>
                         <outlet property="nextButton" destination="Ag4-aJ-pZt" id="J88-sd-kuw"/>
                         <outlet property="prevButton" destination="cRF-0u-e5h" id="qx3-kg-HHN"/>
                         <outlet property="userTable" destination="y69-UI-bnX" id="3X8-2M-vmL"/>
@@ -1032,6 +1044,8 @@
         <image name="users.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CPI-GR-2qI"/>
+        <segue reference="hMH-pd-ZgU"/>
+        <segue reference="qDf-cF-GdD"/>
+        <segue reference="3Ub-fO-uI7"/>
     </inferredMetricsTieBreakers>
 </document>

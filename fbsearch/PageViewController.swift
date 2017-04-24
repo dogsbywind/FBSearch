@@ -29,15 +29,22 @@ class PageViewController: ResultViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initSideMenu(menuButton:menuButton)
-        let query:String = "https://dogs-by-wind.appspot.com/fbsearch.php?keyword="+Passengers.union.keyword+"&type=page"
         Passengers.union.next=nextButton
         Passengers.union.prev=prevButton
-        loadResults(table: self.pageTable,searchQuery: query)
-        // Do any additional setup after loading the view.
+        if Passengers.union.fromFavo{
+            loadFromFavo(table: self.pageTable, type: "page")
+        }
+        else{
+            let query:String = "https://dogs-by-wind.appspot.com/fbsearch.php?keyword="+Passengers.union.keyword+"&type=page"
+            loadResults(table: self.pageTable,searchQuery: query)
+        }// Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        if Passengers.union.fromFavo{
+            loadFromFavo(table: self.userTable, type: "user")
+        }
         pageTable.reloadData()
     }
 

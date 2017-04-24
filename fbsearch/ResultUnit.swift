@@ -24,14 +24,20 @@ class ResultUnit{
         self.url = String()
     }
     
-    init?(name:String,photo:UIImage,favo:Bool,id:String) {
+    init?(name:String,url:String,favo:Bool,id:String) {
         if name.isEmpty{
             return nil
         }
         self.name=name
-        self.photo=photo
+        self.photo=UIImage()
         self.favo=favo
         self.id=id
-        self.url = String()
+        self.url = url
+        if let photoUrl = URL(string:url){
+            if let data = NSData(contentsOf: photoUrl){
+                self.photo = UIImage(data: data as Data)!
+            }
+        }
+        
     }
 }

@@ -10,6 +10,9 @@ target 'fbsearch' do
   pod 'Alamofire', '~> 4.4'
   pod 'SwiftyJSON'
   pod 'EasyToast'
+  pod 'FacebookCore'
+  pod 'FacebookLogin'
+  pod 'FacebookShare'
   
   target 'fbsearchTests' do
     inherit! :search_paths

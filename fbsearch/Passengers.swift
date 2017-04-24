@@ -22,12 +22,15 @@ class Parameters{
     
     var favoDict:[String:String]
     
+    var fromFavo:Bool
+    
     init(){
         self.keyword = String()
         self.next = UIButton()
         self.prev = UIButton()
         self.searchid = String()
         self.favoDict = [String:String]()
+        self.fromFavo = false
     }
 }
 }

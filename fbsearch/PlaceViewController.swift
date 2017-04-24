@@ -29,15 +29,23 @@ class PlaceViewController: ResultViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initSideMenu(menuButton:menuButton)
-        let query:String = "https://dogs-by-wind.appspot.com/fbsearch.php?keyword="+Passengers.union.keyword+"&type=place"
         Passengers.union.next=nextButton
         Passengers.union.prev=prevButton
-        loadResults(table: self.placeTable,searchQuery: query)
+        if Passengers.union.fromFavo{
+            loadFromFavo(table: self.placeTable, type: "place")
+        }
+        else{
+            let query:String = "https://dogs-by-wind.appspot.com/fbsearch.php?keyword="+Passengers.union.keyword+"&type=place"
+            loadResults(table: self.placeTable,searchQuery: query)
+        }
         // Do any additional setup after loading the view.
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        if Passengers.union.fromFavo{
+            loadFromFavo(table: self.userTable, type: "user")
+        }
         placeTable.reloadData()
     }
     

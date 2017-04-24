@@ -15,7 +15,7 @@ class ResultTableViewController: UITableViewController {
     var resultUnits = [ResultUnit]()
     
     private func loadResults(){
-        Alamofire.request("https://dogs-by-wind.appspot.com/fbsearch.php?keyword=usc&type=user").responseJSON { response in
+        /*Alamofire.request("https://dogs-by-wind.appspot.com/fbsearch.php?keyword=usc&type=user").responseJSON { response in
             
             if let JSONa = response.result.value {
                 let js = JSON(JSONa)
@@ -36,7 +36,7 @@ class ResultTableViewController: UITableViewController {
                 self.tableView.reloadData()
                 //print("JSON: \(JSONa)")
             }
-        }
+        }*/
     }
     
     override func viewDidLoad() {

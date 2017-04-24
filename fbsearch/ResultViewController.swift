@@ -41,23 +41,43 @@ class ResultViewController: UIViewController ,UITableViewDelegate, UITableViewDa
         revealViewController().rearViewRevealWidth = 275
     }
     
+    func loadFromFavo(table:UITableView, type:String){
+        resultUnits = []
+        resultsLoaded = []
+        let defaults = UserDefaults.standard
+        for item in defaults.dictionaryRepresentation().keys{
+            print(item)
+            if let dict = defaults.dictionary(forKey: item) as? [String : String]{
+            if dict["type"] == type{
+                guard let resultUnit = ResultUnit(name:dict["name"]!,url:dict["profileUrl"]!,favo:true,id:dict["id"]!)
+                    else {
+                        fatalError("can't initialize")
+                }
+                resultUnits += [resultUnit]
+            }
+            }
+        }
+            self.totalPages = self.resultUnits.count/10
+            self.loadResultUnit(index: 0)
+            table.reloadData()
+            Passengers.union.next.isEnabled=(self.totalPages>0)
+            Passengers.union.prev.isEnabled=false
+    }
+    
     func loadResults(table:UITableView,searchQuery:String){
+        resultUnits = []
+        resultsLoaded = []
         SwiftSpinner.show(delay: 0.1, title: "Loading Data...")
         Alamofire.request(searchQuery).responseJSON { response in
             if let JSONa = response.result.value {
                 let js = JSON(JSONa)
-                var profilePhoto:UIImage = UIImage()
                 for (_,subJson):(String, JSON) in js["data"] {
-                    if let photoUrl = URL(string:subJson["picture"]["data"]["url"].string!){
-                        if let data = NSData(contentsOf: photoUrl){
-                            profilePhoto = UIImage(data: data as Data)!
-                        }
-                    }
-                    guard let resultUnit = ResultUnit(name:subJson["name"].string!,photo: profilePhoto ,favo:true, id: subJson["id"].string!)
+                    
+                    guard let resultUnit = ResultUnit(name:subJson["name"].string!,url: subJson["picture"]["data"]["url"].string! ,favo:true, id: subJson["id"].string!)
                         else {
                             fatalError("unable to create")
                     }
-                    resultUnit.url = subJson["picture"]["data"]["url"].string!
+                    //resultUnit.url = subJson["picture"]["data"]["url"].string!
                     self.resultUnits += [resultUnit]
                 }
                 self.totalPages = self.resultUnits.count/10
@@ -108,24 +128,20 @@ class ResultViewController: UIViewController ,UITableViewDelegate, UITableViewDa
             Passengers.union.favoDict["id"] = resultsLoaded[indexPath.row].id
             Passengers.union.favoDict["profileUrl"] = resultsLoaded[indexPath.row].url
             var type = String()
-            switch tableView{
-            case userTable :
+            if userTable != nil {
                 type = "user"
-                break
-            case pageTable:
+            }
+            if pageTable != nil {
                 type = "page"
-                break
-            case eventTable:
+            }
+            if eventTable != nil {
                 type = "event"
-                break
-            case placeTable:
+            }
+            if placeTable != nil {
                 type = "place"
-                break
-            case groupTable:
+            }
+            if groupTable != nil {
                 type = "group"
-                break
-            default:
-                break
             }
             Passengers.union.favoDict["type"] = type
             performSegue(withIdentifier: "toDetail", sender: self)
@@ -134,6 +150,7 @@ class ResultViewController: UIViewController ,UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         //loadResults()
         /*let url = URL(string:"https://dogs-by-wind.appspot.com/fbsearch.php?keyword=usc&type=user")
         

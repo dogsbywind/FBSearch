@@ -10,6 +10,7 @@ import UIKit
 
 class UserViewController: ResultViewController {
     
+    @IBOutlet weak var navTitle: UINavigationItem!
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var prevButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
@@ -28,16 +29,31 @@ class UserViewController: ResultViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if Passengers.union.fromFavo{
+            navTitle.title = "Favorites"
+        }
+        else {
+            navTitle.title = "Search Results"
+        }
         initSideMenu(menuButton:menuButton)
-        let query:String = "https://dogs-by-wind.appspot.com/fbsearch.php?keyword="+Passengers.union.keyword+"&type=user"
         Passengers.union.next=nextButton
         Passengers.union.prev=prevButton
-        loadResults(table: self.userTable,searchQuery: query)
+        if Passengers.union.fromFavo{
+            loadFromFavo(table: self.userTable, type: "user")
+        }
+        else{
+            let query:String = "https://dogs-by-wind.appspot.com/fbsearch.php?keyword="+Passengers.union.keyword+"&type=user"
+            loadResults(table: self.userTable,searchQuery: query)
+        }
+        
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        if Passengers.union.fromFavo{
+            loadFromFavo(table: self.userTable, type: "user")
+        }
         userTable.reloadData()
     }
 

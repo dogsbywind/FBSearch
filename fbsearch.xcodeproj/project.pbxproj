@@ -11,6 +11,7 @@
 		4B0A71461EA9745300015DDB /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0A71451EA9745300015DDB /* PostTableViewCell.swift */; };
 		4B0A71481EA9745E00015DDB /* AlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0A71471EA9745E00015DDB /* AlbumTableViewCell.swift */; };
 		4B428ABA1EAAE6B900DECC81 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B428AB91EAAE6B900DECC81 /* SWRevealViewController.m */; };
+		4B7F793F1EAD5F680091729D /* SideTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7F793E1EAD5F680091729D /* SideTableViewController.swift */; };
 		4B80C6F31EA56CDB00D732B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B80C6F21EA56CDB00D732B6 /* AppDelegate.swift */; };
 		4B80C6FA1EA56CDB00D732B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B80C6F81EA56CDB00D732B6 /* Main.storyboard */; };
 		4B80C6FC1EA56CDB00D732B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B80C6FB1EA56CDB00D732B6 /* Assets.xcassets */; };
@@ -81,6 +82,7 @@
 		4B428AB71EAAE6B900DECC81 /* fbsearch-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "fbsearch-Bridging-Header.h"; sourceTree = "<group>"; };
 		4B428AB81EAAE6B900DECC81 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		4B428AB91EAAE6B900DECC81 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		4B7F793E1EAD5F680091729D /* SideTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideTableViewController.swift; sourceTree = "<group>"; };
 		4B80C6EF1EA56CDB00D732B6 /* fbsearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fbsearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B80C6F21EA56CDB00D732B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B80C6F91EA56CDB00D732B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				4B80C6F21EA56CDB00D732B6 /* AppDelegate.swift */,
 				4B80C74D1EA6D2C400D732B6 /* SearchViewController.swift */,
 				4B80C74B1EA5E94F00D732B6 /* ResultViewController.swift */,
+				4B7F793E1EAD5F680091729D /* SideTableViewController.swift */,
 				4B85732C1EA94F510005B53C /* DetailViewController.swift */,
 				4B85731A1EA805F20005B53C /* UserViewController.swift */,
 				4B85731C1EA80C3C0005B53C /* PageViewController.swift */,
@@ -605,6 +608,7 @@
 				4B8573151EA756EA0005B53C /* ResultTableViewController.swift in Sources */,
 				4B85731F1EA80C500005B53C /* EventViewController.swift in Sources */,
 				4B80C6F31EA56CDB00D732B6 /* AppDelegate.swift in Sources */,
+				4B7F793F1EAD5F680091729D /* SideTableViewController.swift in Sources */,
 				4B8573291EA8A8270005B53C /* ResultTabBarController.swift in Sources */,
 				4B85731D1EA80C3C0005B53C /* PageViewController.swift in Sources */,
 				4B8573111EA747CF0005B53C /* ResultTableViewCell.swift in Sources */,
