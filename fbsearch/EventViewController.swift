@@ -10,6 +10,7 @@ import UIKit
 
 class EventViewController: ResultViewController {
 
+    @IBOutlet weak var navTitle: UINavigationItem!
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var prevButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
@@ -29,7 +30,12 @@ class EventViewController: ResultViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initSideMenu(menuButton:menuButton)
-       
+        if Passengers.union.fromFavo{
+            navTitle.title = "Favorites"
+        }
+        else {
+            navTitle.title = "Search Results"
+        }
         Passengers.union.next=nextButton
         Passengers.union.prev=prevButton
         if Passengers.union.fromFavo{
@@ -45,7 +51,7 @@ class EventViewController: ResultViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         if Passengers.union.fromFavo{
-            loadFromFavo(table: self.userTable, type: "user")
+            loadFromFavo(table: self.eventTable, type: "event")
         }
         eventTable.reloadData()
     }

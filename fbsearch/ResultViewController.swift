@@ -46,7 +46,7 @@ class ResultViewController: UIViewController ,UITableViewDelegate, UITableViewDa
         resultsLoaded = []
         let defaults = UserDefaults.standard
         for item in defaults.dictionaryRepresentation().keys{
-            print(item)
+            //print(item)
             if let dict = defaults.dictionary(forKey: item) as? [String : String]{
             if dict["type"] == type{
                 guard let resultUnit = ResultUnit(name:dict["name"]!,url:dict["profileUrl"]!,favo:true,id:dict["id"]!)

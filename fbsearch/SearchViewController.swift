@@ -35,7 +35,7 @@ class SearchViewController: UIViewController {
     
     @IBAction func searchClicked(_ sender: Any) {
         if(searchText.text=="") {
-            self.view.showToast("Please enter a keyword", position: .bottom, popTime: 3, dismissOnTap: true)
+            self.view.showToast("Enter a valid query!", position: .bottom, popTime: 3, dismissOnTap: true)
             return
         }
         performSegue(withIdentifier: "searchToResult", sender: self)

@@ -114,6 +114,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="VR9-fM-71C" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="yhj-Is-TGu"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -444,6 +447,7 @@
                     <tabBarItem key="tabBarItem" title="Pages" image="page.png" id="O3f-gD-9q9"/>
                     <connections>
                         <outlet property="menuButton" destination="p2o-b3-95C" id="awj-WY-7c1"/>
+                        <outlet property="navTitle" destination="veE-aU-lxC" id="5y2-Xs-4A6"/>
                         <outlet property="nextButton" destination="EeZ-t9-pdj" id="eEP-lk-b4d"/>
                         <outlet property="pageTable" destination="Voc-XO-Ldn" id="iV0-dj-ZYG"/>
                         <outlet property="prevButton" destination="3D4-YI-RaU" id="K8g-b6-qqm"/>
@@ -552,6 +556,7 @@
                     <connections>
                         <outlet property="eventTable" destination="8vs-R6-yaV" id="sDZ-UK-Ht5"/>
                         <outlet property="menuButton" destination="ewr-W5-ysI" id="imm-dS-LZt"/>
+                        <outlet property="navTitle" destination="FOg-V2-98u" id="Rzw-jH-6dC"/>
                         <outlet property="nextButton" destination="1qE-jk-sDQ" id="M2B-Mf-IaK"/>
                         <outlet property="prevButton" destination="f3f-3x-EnV" id="If2-ag-Pjv"/>
                         <segue destination="dTm-f1-AEl" kind="show" identifier="toDetail" id="pME-s2-Ywd"/>
@@ -658,6 +663,7 @@
                     <tabBarItem key="tabBarItem" title="Places" image="place.png" id="UtZ-ow-G9J"/>
                     <connections>
                         <outlet property="menuButton" destination="xmE-Xv-Adg" id="HSB-qF-IcZ"/>
+                        <outlet property="navTitle" destination="mez-Nh-lSA" id="VWI-Aw-hlU"/>
                         <outlet property="nextButton" destination="RQH-Vh-iHO" id="CvU-jh-hg7"/>
                         <outlet property="placeTable" destination="16T-yk-YfW" id="wvT-CW-FgV"/>
                         <outlet property="prevButton" destination="ukA-iC-Dfh" id="gUJ-Pd-Z3f"/>
@@ -766,6 +772,7 @@
                     <connections>
                         <outlet property="groupTable" destination="thB-1O-kHy" id="9dn-ql-fYU"/>
                         <outlet property="menuButton" destination="FX3-Iu-2FY" id="Raq-M1-zfh"/>
+                        <outlet property="navTitle" destination="uLF-ar-VvF" id="Zl7-ET-hrv"/>
                         <outlet property="nextButton" destination="3yz-8U-pUv" id="WOv-6c-pPr"/>
                         <outlet property="prevButton" destination="cT1-Hk-Mfi" id="BIc-ct-040"/>
                         <segue destination="dTm-f1-AEl" kind="show" identifier="toDetail" id="CPI-GR-2qI"/>
@@ -774,6 +781,59 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KtP-tp-ict" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="796" y="1096"/>
+        </scene>
+        <!--Aboutme View Controller-->
+        <scene sceneID="42g-DF-eF3">
+            <objects>
+                <viewController id="VR9-fM-71C" customClass="AboutmeViewController" customModule="fbsearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="axk-uX-a6L"/>
+                        <viewControllerLayoutGuide type="bottom" id="GYQ-fc-agd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gWr-oJ-6FQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5VM-A5-lqY">
+                                <rect key="frame" x="0.0" y="23" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="About me" id="D0a-Ww-8zH">
+                                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="Wyd-bg-5Yk"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="IMG_6621.JPG" translatesAutoresizingMaskIntoConstraints="NO" id="Feq-yt-OYz">
+                                <rect key="frame" x="132" y="141" width="150" height="150"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Jibiao Shen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YhP-c0-auM">
+                                <rect key="frame" x="97" y="328" width="221" height="80.999999999999972"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="7813-0380-62" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zvy-3G-sZj">
+                                <rect key="frame" x="70" y="417" width="275" height="81"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="menuButton" destination="Wyd-bg-5Yk" id="4sg-4J-GpU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MZB-eV-ejM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2272.463768115942" y="105.97826086956522"/>
         </scene>
         <!--albums-->
         <scene sceneID="uTH-Tb-HSO">
@@ -792,18 +852,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="albumCell" rowHeight="180" id="uEg-B5-58V" customClass="AlbumTableViewCell" customModule="fbsearch" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55" width="396" height="180"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="albumCell" rowHeight="66" id="uEg-B5-58V" customClass="AlbumTableViewCell" customModule="fbsearch" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="55" width="396" height="66"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uEg-B5-58V" id="k8J-Qp-r1n">
-                                            <rect key="frame" x="0.0" y="0.0" width="396" height="179"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="396" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="70" placeholderIntrinsicHeight="40" translatesAutoresizingMaskIntoConstraints="NO" id="idc-zG-Di9">
-                                                    <rect key="frame" x="163" y="107" width="70" height="40"/>
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="0.0" placeholderIntrinsicHeight="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="idc-zG-Di9">
+                                                    <rect key="frame" x="198" y="52.666666666666664" width="0.0" height="0.0"/>
                                                 </imageView>
-                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="70" placeholderIntrinsicHeight="40" translatesAutoresizingMaskIntoConstraints="NO" id="hwJ-io-eQA">
-                                                    <rect key="frame" x="163" y="45" width="70" height="40"/>
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="0.0" placeholderIntrinsicHeight="infinite" translatesAutoresizingMaskIntoConstraints="NO" id="hwJ-io-eQA">
+                                                    <rect key="frame" x="198" y="43" width="0.0" height="1.6666666666666643"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Gn-rK-AIr">
                                                     <rect key="frame" x="21" y="8" width="355" height="30"/>
@@ -813,11 +873,11 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="idc-zG-Di9" secondAttribute="bottom" constant="25" id="1le-K7-ZwT"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="idc-zG-Di9" secondAttribute="bottom" constant="5" id="1le-K7-ZwT"/>
                                                 <constraint firstItem="hwJ-io-eQA" firstAttribute="centerX" secondItem="k8J-Qp-r1n" secondAttribute="centerX" id="7bP-57-tzd"/>
-                                                <constraint firstItem="idc-zG-Di9" firstAttribute="top" secondItem="hwJ-io-eQA" secondAttribute="bottom" constant="22" id="87h-DN-Jmk"/>
+                                                <constraint firstItem="idc-zG-Di9" firstAttribute="top" secondItem="hwJ-io-eQA" secondAttribute="bottom" constant="8" id="87h-DN-Jmk"/>
                                                 <constraint firstItem="idc-zG-Di9" firstAttribute="centerX" secondItem="k8J-Qp-r1n" secondAttribute="centerX" id="8TN-V2-KcE"/>
-                                                <constraint firstItem="hwJ-io-eQA" firstAttribute="top" secondItem="8Gn-rK-AIr" secondAttribute="bottom" constant="7" id="8Tt-Qp-xAo"/>
+                                                <constraint firstItem="hwJ-io-eQA" firstAttribute="top" secondItem="8Gn-rK-AIr" secondAttribute="bottom" constant="5" id="8Tt-Qp-xAo"/>
                                                 <constraint firstItem="8Gn-rK-AIr" firstAttribute="top" secondItem="k8J-Qp-r1n" secondAttribute="topMargin" id="M2V-t9-f0c"/>
                                                 <constraint firstItem="8Gn-rK-AIr" firstAttribute="leading" secondItem="k8J-Qp-r1n" secondAttribute="leadingMargin" constant="13" id="Ris-hU-BPR"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="8Gn-rK-AIr" secondAttribute="trailing" constant="12" id="bvD-Ep-KXv"/>
@@ -853,7 +913,7 @@
                                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="Mnf-P9-Hek" kind="unwind" unwindAction="unwindToResultTabBarWithSegue:" id="5Km-rJ-2xs"/>
+                                                    <segue destination="Mnf-P9-Hek" kind="unwind" unwindAction="unwindToResultTabBarWithSegue:" id="8MN-i8-Lvd"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
@@ -991,7 +1051,7 @@
                                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="DwH-G1-2ip" kind="unwind" unwindAction="unwindToResultTabBarWithSegue:" id="Uyf-Sl-q1g"/>
+                                                    <segue destination="DwH-G1-2ip" kind="unwind" unwindAction="unwindToResultTabBarWithSegue:" id="842-gj-W5b"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
@@ -1027,6 +1087,7 @@
     </scenes>
     <resources>
         <image name="200px-Ios-information-outline.png" width="48" height="48"/>
+        <image name="IMG_6621.JPG" width="480" height="481"/>
         <image name="album.png" width="26" height="26"/>
         <image name="back5.png" width="26" height="26"/>
         <image name="empty.png" width="48" height="48"/>
@@ -1045,7 +1106,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="hMH-pd-ZgU"/>
-        <segue reference="qDf-cF-GdD"/>
-        <segue reference="3Ub-fO-uI7"/>
+        <segue reference="dui-Lk-nD0"/>
+        <segue reference="LfI-nL-x9i"/>
     </inferredMetricsTieBreakers>
 </document>

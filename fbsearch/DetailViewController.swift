@@ -10,6 +10,9 @@ import UIKit
 import SwiftSpinner
 import Alamofire
 import SwiftyJSON
+import FacebookShare
+import FBSDKCoreKit
+import EasyToast
 
 class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
@@ -201,18 +204,85 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let defaults = UserDefaults.standard
         if defaults.object(forKey: dict["id"]!) == nil{
             defaults.set(dict,forKey:dict["id"]!)
+            self.view.showToast("Added to favorites!", position: .bottom, popTime: 3, dismissOnTap: true)
         }
         else {
             defaults.removeObject(forKey: dict["id"]!)
+            self.view.showToast("Removed from favorites!", position: .bottom, popTime: 3, dismissOnTap: true)
         }
+    }
+    
+    func shareOnFB(){
+        let sharedContent = LinkShareContent(url:URL(string:"https://dogs-by-wind.appspot.com/fbsearch.html")!, title:Passengers.union.favoDict["name"],description:"FB Share for CSCI 571", quote : "international", imageURL:URL(string:Passengers.union.favoDict["profileUrl"]!))
+        let dialog = ShareDialog(content:sharedContent)
+        print("SDK version \(FBSDKSettings.sdkVersion())")
+        dialog.mode = .native
+        dialog.failsOnInvalidData = true
+        dialog.completion = { result in
+            switch result{
+            case .success:
+                self.view.showToast("Shared!", position: .bottom, popTime: 3, dismissOnTap: true)
+            case .failed:
+                self.view.showToast("Failed!", position: .bottom, popTime: 3, dismissOnTap: true)
+            case .cancelled:
+                self.view.showToast("Cancelled!", position: .bottom, popTime: 3, dismissOnTap: true)
+            /// The operation failed.
+            //case failed(Error):
+            
+            /// The operation was cancelled by the user.
+            //case cancelled:
+            //Handle results
+            }
+        }
+        do {
+            try dialog.show()
+        }catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func showPopUp(){
+        let popUp = UIAlertController(title:nil, message:"Menu",preferredStyle:.actionSheet)
+        
+        let addFavo = UIAlertAction(title:"Add to favorites", style:.default,handler:{
+            (alert: UIAlertAction!)-> Void in
+            self.addToFavorite(dict: Passengers.union.favoDict)
+        })
+        let removeFavo = UIAlertAction(title:"Remove from favorites", style:.default,handler:{
+            (alert: UIAlertAction!)-> Void in
+            self.addToFavorite(dict: Passengers.union.favoDict)
+        })
+        
+        let shareAction = UIAlertAction(title:"Share", style:.default,handler:{
+            (alert: UIAlertAction!)-> Void in
+            self.shareOnFB()
+        })
+        
+        let cancelAction = UIAlertAction(title:"Cancel",style:.cancel,handler:{
+            (alert:UIAlertAction!)->Void in
+        })
+        let defaults = UserDefaults.standard
+        if defaults.object(forKey: Passengers.union.searchid) == nil
+        {
+            popUp.addAction(addFavo)
+        }
+        else{
+            popUp.addAction(removeFavo)
+        }
+        popUp.addAction(shareAction)
+        popUp.addAction(cancelAction)
+        
+        self.present(popUp, animated: true,completion: nil)
     }
 
     
     @IBAction func popUpMenu1(_ sender: Any) {
-        addToFavorite(dict: Passengers.union.favoDict)
+        showPopUp()
+       // addToFavorite(dict: Passengers.union.favoDict)
     }
     @IBAction func popUpMenu2(_ sender: Any) {
-        addToFavorite(dict: Passengers.union.favoDict)
+        showPopUp()
+        // addToFavorite(dict: Passengers.union.favoDict)
     }
     /*
     // MARK: - Navigation
