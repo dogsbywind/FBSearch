@@ -42,26 +42,32 @@ class ResultViewController: UIViewController ,UITableViewDelegate, UITableViewDa
     }
     
     func loadFromFavo(table:UITableView, type:String){
-        resultUnits = []
-        resultsLoaded = []
-        let defaults = UserDefaults.standard
-        for item in defaults.dictionaryRepresentation().keys{
-            //print(item)
-            if let dict = defaults.dictionary(forKey: item) as? [String : String]{
-            if dict["type"] == type{
-                guard let resultUnit = ResultUnit(name:dict["name"]!,url:dict["profileUrl"]!,favo:true,id:dict["id"]!)
-                    else {
-                        fatalError("can't initialize")
+        resultUnits = [ResultUnit]()
+        resultsLoaded = [ResultUnit]()
+        SwiftSpinner.show(delay: 0.1, title: "Loading Data...")
+        Alamofire.request("https://dogs-by-wind.appspot.com/fbsearch.php?http://dogs-by-wind.appspot.com/fbsearch.php?detail=439912556355930").responseJSON { response in
+            let defaults = UserDefaults.standard
+            for item in defaults.dictionaryRepresentation().keys{
+                //print(item)
+                if let dict = defaults.dictionary(forKey: item) as? [String : String]{
+                    if dict["type"] == type{
+                        guard let resultUnit = ResultUnit(name:dict["name"]!,url:dict["profileUrl"]!,favo:true,id:dict["id"]!)
+                            else {
+                                fatalError("can't initialize")
+                        }
+                        self.resultUnits += [resultUnit]
+                    }
                 }
-                resultUnits += [resultUnit]
             }
-            }
-        }
             self.totalPages = self.resultUnits.count/10
             self.loadResultUnit(index: 0)
             table.reloadData()
             Passengers.union.next.isEnabled=(self.totalPages>0)
             Passengers.union.prev.isEnabled=false
+            SwiftSpinner.hide()
+        }
+
+        
     }
     
     func loadResults(table:UITableView,searchQuery:String){
@@ -86,7 +92,7 @@ class ResultViewController: UIViewController ,UITableViewDelegate, UITableViewDa
                 Passengers.union.next.isEnabled=(self.totalPages>0)
                 Passengers.union.prev.isEnabled=false
                 SwiftSpinner.hide()
-                print("JSON: \(JSONa)")
+                //print("JSON: \(JSONa)")
             }
         }
     }

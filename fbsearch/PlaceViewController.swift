@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class PlaceViewController: ResultViewController {
 
     @IBOutlet weak var navTitle: UINavigationItem!
@@ -27,8 +28,14 @@ class PlaceViewController: ResultViewController {
             nextButton.isEnabled = true
         }
     }
+    
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        if !Passengers.union.fromFavo{
+
+        }
         initSideMenu(menuButton:menuButton)
         if Passengers.union.fromFavo{
             navTitle.title = "Favorites"
@@ -39,13 +46,15 @@ class PlaceViewController: ResultViewController {
         Passengers.union.next=nextButton
         Passengers.union.prev=prevButton
         if Passengers.union.fromFavo{
-            loadFromFavo(table: self.placeTable, type: "place")
         }
         else{
-            let query:String = "https://dogs-by-wind.appspot.com/fbsearch.php?keyword="+Passengers.union.keyword+"&type=place"
+            var location = "USC"
+            if Passengers.union.locStr != "" {
+                location = Passengers.union.locStr
+            }
+            let query:String = "https://dogs-by-wind.appspot.com/fbsearch.php?keyword="+Passengers.union.keyword+"&type=place&location="+location
             loadResults(table: self.placeTable,searchQuery: query)
         }
-        // Do any additional setup after loading the view.
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -58,7 +67,6 @@ class PlaceViewController: ResultViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func prevClicked(_ sender: Any) {
@@ -73,15 +81,5 @@ class PlaceViewController: ResultViewController {
         placeTable.reloadData()
         loadButtons()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -36,8 +36,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if let JSONa = response.result.value {
                 let js = JSON(JSONa)
                 var profilePhoto:UIImage = UIImage()
-                if let photoUrl = URL(string:js["picture"]["data"]["url"].string!){
-
+                if let photoUrl = URL(string:Passengers.union.favoDict["profileUrl"]!){
                     if let data = NSData(contentsOf: photoUrl){
                         profilePhoto = UIImage(data: data as Data)!
                     }
@@ -77,7 +76,6 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     postUnit.profile = profilePhoto
                     self.postUnits += [postUnit]
                 }
-                print("foo")
                 if self.albumTable != nil {
                     if self.albumUnits.count > 0 {
                         self.albumTable.reloadData()
@@ -105,7 +103,6 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     }
                 }
                 SwiftSpinner.hide()
-                print("JSON: \(JSONa)")
             }
         }
 
@@ -114,13 +111,11 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         loadAP()
-        // Do any additional setup after loading the view.
     }
     
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -130,7 +125,6 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         else {
             return postUnits.count
         }
-        // return the number of rows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) ->       UITableViewCell{
@@ -145,18 +139,36 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if hiddenStatus[2*indexPath.row] {
                 cell.pic1.isHidden = true
                 cell.pic1.image = nil
+                cell.pic1W.constant = 1
+                cell.pic1H.constant = 1
             }
             else {
                 cell.pic1.isHidden = false
                 cell.pic1.image = albumUnit.pic1
+                if albumUnit.pic1 != nil {
+                    cell.pic1W.constant = 2*(albumUnit.pic1?.size.width)!
+                    if cell.pic1W.constant > 330{
+                        cell.pic1W.constant = 330
+                    }
+                    cell.pic1H.constant = cell.pic1W.constant*(albumUnit.pic1?.size.height)!/(albumUnit.pic1?.size.width)!
+                }
             }
             if hiddenStatus[2*indexPath.row+1] {
                 cell.pic2.isHidden = true
                 cell.pic2.image = nil
+                cell.pic2W.constant = 1
+                cell.pic2H.constant = 1
             }
             else {
                 cell.pic2.isHidden = false
                 cell.pic2.image = albumUnit.pic2
+                if albumUnit.pic2 != nil {
+                    cell.pic2W.constant = 2*(albumUnit.pic2?.size.width)!
+                    if cell.pic2W.constant > 330{
+                        cell.pic2W.constant = 330
+                    }
+                    cell.pic2H.constant = cell.pic2W.constant*(albumUnit.pic2?.size.height)!/(albumUnit.pic2?.size.width)!
+                }
             }
             returnCell = cell
         }
@@ -170,11 +182,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell.message.text = postUnit.message
             cell.timeStamp.text = postUnit.timeStamp
             returnCell = cell
-            //let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
             
-            // Configure the cell...
-            
-            // create your cells
             }
         return returnCell
     }
@@ -191,11 +199,22 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     if albumUnit.pic2 != nil {
                         hiddenStatus [2*indexPath.row+1] = !hiddenStatus [2*indexPath.row+1]
                     }
+                    var tmp = 99
+                    for i in [0,1,2,3,4] {
+                        if (i != indexPath.row && !hiddenStatus[2*i]){
+                            hiddenStatus[2*i] = true
+                            hiddenStatus[2*i+1] = true
+                            tmp = i
+                        }
+                    }
                     tableView.beginUpdates()
                     tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                    if tmp < 5{
+                        let anotherPath = IndexPath(row: tmp, section: 0)
+                        tableView.reloadRows(at: [anotherPath], with: UITableViewRowAnimation.automatic)
+                    }
                     tableView.endUpdates()
                 }
-                
             }
        // }
     }
@@ -213,12 +232,14 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func shareOnFB(){
-        let sharedContent = LinkShareContent(url:URL(string:"https://dogs-by-wind.appspot.com/fbsearch.html")!, title:Passengers.union.favoDict["name"],description:"FB Share for CSCI 571", quote : "international", imageURL:URL(string:Passengers.union.favoDict["profileUrl"]!))
+        let sharedContent = LinkShareContent(url:URL(string:"https://dogs-by-wind.appspot.com/fbsearch.html")!, title:Passengers.union.favoDict["name"],description:"FB Share for CSCI 571", imageURL:URL(string:Passengers.union.favoDict["profileUrl"]!))
         let dialog = ShareDialog(content:sharedContent)
-        print("SDK version \(FBSDKSettings.sdkVersion())")
-        dialog.mode = .native
+        //print("SDK version \(FBSDKSettings.sdkVersion())")
+        dialog.mode = .feedWeb
+        dialog.presentingViewController = self
         dialog.failsOnInvalidData = true
         dialog.completion = { result in
+            //print(result)
             switch result{
             case .success:
                 self.view.showToast("Shared!", position: .bottom, popTime: 3, dismissOnTap: true)
@@ -228,11 +249,11 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.view.showToast("Cancelled!", position: .bottom, popTime: 3, dismissOnTap: true)
             /// The operation failed.
             //case failed(Error):
-            
             /// The operation was cancelled by the user.
             //case cancelled:
             //Handle results
             }
+            //print(result)
         }
         do {
             try dialog.show()
@@ -284,14 +305,5 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         showPopUp()
         // addToFavorite(dict: Passengers.union.favoDict)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

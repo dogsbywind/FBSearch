@@ -8,19 +8,34 @@
 
 import UIKit
 import EasyToast
+import CoreLocation
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController,CLLocationManagerDelegate {
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var searchText: UITextField!
     
+    var locationManager:CLLocationManager = CLLocationManager()
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
+        let location = locations.last! as CLLocation
+        Passengers.union.locStr = "\(location.coordinate.latitude),\(location.coordinate.longitude)"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        if CLLocationManager.locationServicesEnabled(){
+            locationManager = CLLocationManager()
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.startUpdatingLocation()
+        }
         initSideMenu()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

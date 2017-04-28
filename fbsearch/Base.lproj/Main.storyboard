@@ -806,21 +806,21 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="IMG_6621.JPG" translatesAutoresizingMaskIntoConstraints="NO" id="Feq-yt-OYz">
-                                <rect key="frame" x="132" y="141" width="150" height="150"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="IMG_1658 3.JPG" translatesAutoresizingMaskIntoConstraints="NO" id="Feq-yt-OYz">
+                                <rect key="frame" x="42" y="161" width="330" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Jibiao Shen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YhP-c0-auM">
-                                <rect key="frame" x="97" y="328" width="221" height="80.999999999999972"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="7813-0380-62" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zvy-3G-sZj">
+                                <rect key="frame" x="42" y="527" width="330" height="81"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="7813-0380-62" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zvy-3G-sZj">
-                                <rect key="frame" x="70" y="417" width="275" height="81"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Jibiao Shen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YhP-c0-auM">
+                                <rect key="frame" x="42" y="438" width="330" height="81"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -860,13 +860,21 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="0.0" placeholderIntrinsicHeight="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="idc-zG-Di9">
-                                                    <rect key="frame" x="198" y="52.666666666666664" width="0.0" height="0.0"/>
+                                                    <rect key="frame" x="197.66666666666666" y="51.666666666666664" width="1" height="1"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="1" id="2P7-xP-9Fk"/>
+                                                        <constraint firstAttribute="height" constant="1" id="cEf-1R-uWp"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="0.0" placeholderIntrinsicHeight="infinite" translatesAutoresizingMaskIntoConstraints="NO" id="hwJ-io-eQA">
-                                                    <rect key="frame" x="198" y="43" width="0.0" height="1.6666666666666643"/>
+                                                    <rect key="frame" x="197.66666666666666" y="42" width="1" height="1.6666666666666643"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="1" id="cMp-qf-Vnz"/>
+                                                        <constraint firstAttribute="height" constant="1" id="zvH-oO-5Cq"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Gn-rK-AIr">
-                                                    <rect key="frame" x="21" y="8" width="355" height="30"/>
+                                                    <rect key="frame" x="21" y="8" width="355" height="29"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -886,7 +894,11 @@
                                         <connections>
                                             <outlet property="albumTitle" destination="8Gn-rK-AIr" id="uLV-Bp-MEG"/>
                                             <outlet property="pic1" destination="hwJ-io-eQA" id="2PB-Mh-4Di"/>
+                                            <outlet property="pic1H" destination="zvH-oO-5Cq" id="RWC-36-7ez"/>
+                                            <outlet property="pic1W" destination="cMp-qf-Vnz" id="LcN-LT-TTI"/>
                                             <outlet property="pic2" destination="idc-zG-Di9" id="jRF-KP-YRO"/>
+                                            <outlet property="pic2H" destination="cEf-1R-uWp" id="488-qy-9TD"/>
+                                            <outlet property="pic2W" destination="2P7-xP-9Fk" id="zsr-ql-8iH"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1087,7 +1099,7 @@
     </scenes>
     <resources>
         <image name="200px-Ios-information-outline.png" width="48" height="48"/>
-        <image name="IMG_6621.JPG" width="480" height="481"/>
+        <image name="IMG_1658 3.JPG" width="2619" height="1560"/>
         <image name="album.png" width="26" height="26"/>
         <image name="back5.png" width="26" height="26"/>
         <image name="empty.png" width="48" height="48"/>
@@ -1105,8 +1117,8 @@
         <image name="users.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="qDf-cF-GdD"/>
         <segue reference="hMH-pd-ZgU"/>
-        <segue reference="dui-Lk-nD0"/>
         <segue reference="LfI-nL-x9i"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -24,6 +24,8 @@ class Parameters{
     
     var fromFavo:Bool
     
+    var locStr:String
+    
     init(){
         self.keyword = String()
         self.next = UIButton()
@@ -31,6 +33,7 @@ class Parameters{
         self.searchid = String()
         self.favoDict = [String:String]()
         self.fromFavo = false
+        self.locStr = ""
     }
 }
 }

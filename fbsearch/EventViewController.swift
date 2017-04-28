@@ -39,13 +39,12 @@ class EventViewController: ResultViewController {
         Passengers.union.next=nextButton
         Passengers.union.prev=prevButton
         if Passengers.union.fromFavo{
-            loadFromFavo(table: self.eventTable, type: "event")
+            //loadFromFavo(table: self.eventTable, type: "event")
         }
         else{
              let query:String = "https://dogs-by-wind.appspot.com/fbsearch.php?keyword="+Passengers.union.keyword+"&type=event"
             loadResults(table: eventTable,searchQuery: query)
         }
-        // Do any additional setup after loading the view.
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -58,7 +57,6 @@ class EventViewController: ResultViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     @IBAction func prevClicked(_ sender: Any) {
         currentPage = currentPage - 1
@@ -72,16 +70,5 @@ class EventViewController: ResultViewController {
         eventTable.reloadData()
         loadButtons()
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

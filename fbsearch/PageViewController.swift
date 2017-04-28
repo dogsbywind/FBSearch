@@ -39,12 +39,12 @@ class PageViewController: ResultViewController {
         Passengers.union.next=nextButton
         Passengers.union.prev=prevButton
         if Passengers.union.fromFavo{
-            loadFromFavo(table: self.pageTable, type: "page")
+            //loadFromFavo(table: self.pageTable, type: "page")
         }
         else{
             let query:String = "https://dogs-by-wind.appspot.com/fbsearch.php?keyword="+Passengers.union.keyword+"&type=page"
             loadResults(table: self.pageTable,searchQuery: query)
-        }// Do any additional setup after loading the view.
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,7 +57,6 @@ class PageViewController: ResultViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     @IBAction func prevClicked(_ sender: Any) {
         currentPage = currentPage - 1
@@ -71,16 +70,6 @@ class PageViewController: ResultViewController {
         pageTable.reloadData()
         loadButtons()
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
